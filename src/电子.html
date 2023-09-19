@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate and Bind Text</title>
+</head>
+<body>
+<p id="generatedText"></p>
+<script>
+    // 获取当前日期，格式为YYYYMMDD
+    function getCurrentDate() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        return `${year}${month}${day}`;
+    }
+
+    // 生成阿拉伯数字序号，按年累计
+    function generateSerialNumber() {
+        // 这里需要你自行处理存储和读取序号的逻辑，可以使用本地存储或者后端接口
+        // 这里简化为每次调用都自增1
+        let serialNumber = Number(localStorage.getItem('serialNumber')) || 0;
+        serialNumber += 1;
+        localStorage.setItem('serialNumber', serialNumber);
+        return serialNumber.toString().padStart(4, '0');
+    }
+
+    // 生成并绑定文本到HTML中的元素
+    function generateAndBindText() {
+        const currentDate = getCurrentDate();
+        const fixedPart = 'YZSY';
+        const serialNumber = generateSerialNumber();
+        const generatedText = `${currentDate}-${fixedPart}-${serialNumber}`;
+
+        const textElement = document.getElementById('generatedText');
+        textElement.textContent = generatedText;
+    }
+
+    // 调用生成并绑定文本的函数
+    generateAndBindText();
+</script>
+</body>
+</html>
+function getCurrentDate(serverDateString) {
+// 假设传入的 serverDateString 格式为 "2023-08-16"
+const dateParts = serverDateString.split('-');
+const year = dateParts[0];
+const month = dateParts[1];
+const day = dateParts[2];
+return `${year}${month}${day}`;
+}
+
+// 传入服务器时间字符串，生成并绑定文本到HTML中的元素
+function generateAndBindText(serverDateString) {
+const currentDate = getCurrentDate(serverDateString);
+const fixedPart = 'YZSY';
+const serialNumber = generateSerialNumber();
+const generatedText = `${currentDate}-${fixedPart}-${serialNumber}`;
+
+const textElement = document.getElementById('generatedText');
+textElement.textContent = generatedText;
+}
+
+// 假设你已经获取到了服务器时间字符串 serverDateString
+const serverDateString = "2023-08-16";
+
+// 调用生成并绑定文本的函数并传入服务器时间字符串
+generateAndBindText(serverDateString);
