@@ -47,9 +47,13 @@ public class Demo1 {
     static List<List<Integer>> totalList=new ArrayList<List<Integer>>();
     static LinkedList stack = new LinkedList<Integer>();
     static HashSet<Integer> set = new HashSet<Integer>();
-/*    public static List<List<Integer>> fullPermutationBacktrackingAlgorithm(int[] arr){
 
-
+    /**
+     * 全排列
+     * @param arr
+     * @return
+     */
+   /* public static List<List<Integer>> fullPermutationBacktrackingAlgorithm(int[] arr){
 
     }*/
 }

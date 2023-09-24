@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public class StreamTest {
     public static void main(String[] args) {
-        test15();
+        test06();
     }
     public static void test15(){
         Stream<Integer> stream = Stream.of(1,2,3,4,5,6,7,8,9,10);
